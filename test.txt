@@ -1,0 +1,33 @@
+	org	0h
+	mov	#30h, #1
+mov	#31h, #1
+	mov	#32h, #1
+	mov	#33h, #1
+	mov	#34h, #1
+	mov	#35h, #1
+	mov	#36h, #1
+	mov	#37h, #1
+
+	mov	#40h, #2
+	mov	#41h, #2
+	mov	#42h, #2
+	mov	#43h, #2
+	mov	#44h, #2
+	mov	#45h, #2
+	mov	#46h, #2
+	mov	#47h, #2
+
+mov R0, #30h
+mov R1, #40h
+mov R2, #0h
+mov R3, #8	//8-bit
+Loop:
+	mov	A, @R0	//A=mem[R0]
+	mov	B, @R1	//B=mem[R1]
+	mul	AB		//A=A*B
+	add	A, R2	//A=A+R2
+	mov	R2, A	//R2=A
+	inc	R0		//R0=R0+1
+	inc	R1		//R1=R1+1
+	
+	djnz	R3, Loop	//R3=R3-1, jump if R3 != 0
